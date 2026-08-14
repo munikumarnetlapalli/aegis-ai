@@ -45,7 +45,7 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       APP_ENV:      ${APP_ENV:-development}
       SECRET_KEY:   ${SECRET_KEY}
-      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+      CORS_ORIGINS: ${CORS_ORIGINS}
     ports:
       - "8000:8000"
     depends_on:
