@@ -14,8 +14,14 @@ from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
+from app.api.answer import router as answer_router
+from app.api.auth import router as auth_router
+from app.api.documents import router as documents_router
 from app.api.health import router as health_router
+from app.api.observability import router as observability_router
+from app.api.query import router as query_router
 from app.core.config import get_settings
+
 
 # ── Logging setup ─────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -36,6 +42,28 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         settings.app_env,
         settings.app_version,
     )
+
+    # Run Alembic migrations on startup so the schema is always current.
+    # In production this should be a separate init container / job, but
+    # for local dev it is convenient and safe (Alembic is idempotent).
+    try:
+        import asyncio  # noqa: PLC0415
+        from alembic.config import Config  # noqa: PLC0415
+        from alembic import command  # noqa: PLC0415
+        import os  # noqa: PLC0415
+
+        alembic_cfg = Config(
+            os.path.join(os.path.dirname(__file__), "..", "alembic.ini")
+        )
+        alembic_cfg.set_main_option("sqlalchemy.url", settings.database_url)
+        # Run in a thread to avoid blocking the event loop
+        await asyncio.get_event_loop().run_in_executor(
+            None, lambda: command.upgrade(alembic_cfg, "head")
+        )
+        logger.info("Database migrations applied.")
+    except Exception as exc:
+        logger.warning("Migration run failed (continuing): %s", exc)
+
     yield
     logger.info("AegisAI backend shutting down.")
 
@@ -66,8 +94,14 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # ── Routes ────────────────────────────────────────────────────────────────
+    # ── Routes ──────────────────────────────────────────────────────────────────
     app.include_router(health_router)
+    app.include_router(auth_router)
+    app.include_router(documents_router)
+    app.include_router(query_router)
+    app.include_router(answer_router)
+    app.include_router(observability_router)
+
 
     # ── Global exception handler ───────────────────────────────────────────────
     @app.exception_handler(Exception)

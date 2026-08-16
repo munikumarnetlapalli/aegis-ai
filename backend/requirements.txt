@@ -1,8 +1,41 @@
+# ── Core web framework ─────────────────────────────────────────────────────────
 fastapi>=0.115.0
 uvicorn[standard]>=0.30.0
+
+# ── Data validation ────────────────────────────────────────────────────────────
 pydantic>=2.8.0
 pydantic-settings>=2.4.0
+
+# ── Database ───────────────────────────────────────────────────────────────────
 sqlalchemy>=2.0.35
 asyncpg>=0.30.0
 psycopg2-binary>=2.9.9
 alembic>=1.13.0
+
+# ── pgvector ───────────────────────────────────────────────────────────────────
+pgvector>=0.3.0
+
+# ── Document parsing (M2) ──────────────────────────────────────────────────────
+# pypdf: pure-Python PDF text extraction — no neural models, no g++ required.
+# python-docx: pure-Python DOCX parsing.
+# docling kept for future structured layout parsing (M5+) but NOT used in the
+# active ingestion pipeline to avoid the torch.compile / g++ runtime dependency.
+pypdf>=4.0.0
+python-docx>=1.1.0
+beautifulsoup4>=4.12.0
+
+# ── Embeddings (M2) ───────────────────────────────────────────────────────────
+sentence-transformers>=3.0.0
+
+# ── File upload support ────────────────────────────────────────────────────────
+python-multipart>=0.0.9
+
+# ── M3: BM25 sparse retrieval ─────────────────────────────────────────────────
+rank-bm25>=0.2.2
+
+# ── M3: Async HTTP (Ollama LLM client) ───────────────────────────────────────
+httpx>=0.27.0
+
+# ── M4: Security & Authentication ─────────────────────────────────────────────
+pyjwt>=2.8.0
+cryptography>=42.0.0

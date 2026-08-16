@@ -1,0 +1,217 @@
+{
+  "total_answerable": 130,
+  "found_count": 117,
+  "missing_count": 13,
+  "found_ids": [
+    "gs-001",
+    "gs-002",
+    "gs-003",
+    "gs-004",
+    "gs-005",
+    "gs-006",
+    "gs-007",
+    "gs-008",
+    "gs-009",
+    "gs-010",
+    "gs-011",
+    "gs-012",
+    "gs-013",
+    "gs-014",
+    "gs-015",
+    "gs-016",
+    "gs-017",
+    "gs-018",
+    "gs-019",
+    "gs-020",
+    "gs-021",
+    "gs-022",
+    "gs-023",
+    "gs-024",
+    "gs-025",
+    "gs-026",
+    "gs-027",
+    "gs-028",
+    "gs-029",
+    "gs-031",
+    "gs-032",
+    "gs-033",
+    "gs-034",
+    "gs-036",
+    "gs-037",
+    "gs-038",
+    "gs-040",
+    "gs-041",
+    "gs-042",
+    "gs-043",
+    "gs-044",
+    "gs-045",
+    "gs-049",
+    "gs-050",
+    "gs-051",
+    "gs-052",
+    "gs-053",
+    "gs-054",
+    "gs-056",
+    "gs-057",
+    "gs-058",
+    "gs-059",
+    "gs-060",
+    "gs-061",
+    "gs-062",
+    "gs-064",
+    "gs-065",
+    "gs-066",
+    "gs-067",
+    "gs-068",
+    "gs-069",
+    "gs-070",
+    "gs-071",
+    "gs-072",
+    "gs-073",
+    "gs-074",
+    "gs-075",
+    "gs-076",
+    "gs-078",
+    "gs-079",
+    "gs-080",
+    "gs-081",
+    "gs-082",
+    "gs-083",
+    "gs-084",
+    "gs-086",
+    "gs-087",
+    "gs-088",
+    "gs-089",
+    "gs-090",
+    "gs-091",
+    "gs-092",
+    "gs-093",
+    "gs-094",
+    "gs-095",
+    "gs-096",
+    "gs-097",
+    "gs-098",
+    "gs-099",
+    "gs-100",
+    "gs-101",
+    "gs-102",
+    "gs-103",
+    "gs-104",
+    "gs-105",
+    "gs-106",
+    "gs-107",
+    "gs-109",
+    "gs-110",
+    "gs-111",
+    "gs-112",
+    "gs-113",
+    "gs-114",
+    "gs-115",
+    "gs-116",
+    "gs-117",
+    "gs-118",
+    "gs-119",
+    "gs-120",
+    "gs-121",
+    "gs-122",
+    "gs-123",
+    "gs-124",
+    "gs-125",
+    "gs-126",
+    "gs-127",
+    "gs-130"
+  ],
+  "missing_items": [
+    {
+      "id": "gs-030",
+      "kws": [
+        "unearned"
+      ],
+      "q": "What is the rule or definition regarding unearned premium refund upon "
+    },
+    {
+      "id": "gs-035",
+      "kws": [
+        "multi-vehicle"
+      ],
+      "q": "What is the rule or definition regarding multi-vehicle policy bundling"
+    },
+    {
+      "id": "gs-039",
+      "kws": [
+        "SR-22"
+      ],
+      "q": "What is the rule or definition regarding SR-22 financial responsibilit"
+    },
+    {
+      "id": "gs-046",
+      "kws": [
+        "diminished"
+      ],
+      "q": "What is the rule or definition regarding diminished value claim compen"
+    },
+    {
+      "id": "gs-047",
+      "kws": [
+        "subrogation"
+      ],
+      "q": "What is the rule or definition regarding subrogation against uninsured"
+    },
+    {
+      "id": "gs-048",
+      "kws": [
+        "assigned"
+      ],
+      "q": "What is the rule or definition regarding assigned risk pool for high-r"
+    },
+    {
+      "id": "gs-055",
+      "kws": [
+        "vandalism"
+      ],
+      "q": "What is the rule or definition regarding vandalism damage coverage und"
+    },
+    {
+      "id": "gs-063",
+      "kws": [
+        "indemnity"
+      ],
+      "q": "What is the rule or definition regarding indemnity principle in proper"
+    },
+    {
+      "id": "gs-077",
+      "kws": [
+        "IVFFlat"
+      ],
+      "q": "Explain the mechanism of IVFFlat inverted file vector index partitioni"
+    },
+    {
+      "id": "gs-085",
+      "kws": [
+        "Presidio-class"
+      ],
+      "q": "Explain the mechanism of Presidio-class PII redaction and policy enfor"
+    },
+    {
+      "id": "gs-108",
+      "kws": [
+        "abstention"
+      ],
+      "q": "Explain the mechanism of abstention confidence label calculation in en"
+    },
+    {
+      "id": "gs-128",
+      "kws": [
+        "JWT"
+      ],
+      "q": "Explain the mechanism of JWT signature verification with HS256 HMAC in"
+    },
+    {
+      "id": "gs-129",
+      "kws": [
+        "PBKDF2"
+      ],
+      "q": "Explain the mechanism of PBKDF2 password hashing with unique per-user "
+    }
+  ]
+}

@@ -75,11 +75,11 @@ valid      rails
 | Milestone | Scope | Status |
 |---|---|---|
 | **M1** | Foundation — React, FastAPI, PostgreSQL, pgvector, Docker, health checks | 🟢 Complete |
-| **M2** | Document ingestion — upload, Docling, chunking, embed, index | ⬜ Upcoming |
-| **M3** | Production RAG — BM25, RRF, reranking, citations, abstention | ⬜ |
-| **M4** | Security — auth, RBAC, jurisdiction isolation, PII, prompt injection | ⬜ |
-| **M5** | Product UI — polished chat, documents, citation viewer | ⬜ |
-| **M6** | Evaluation — 200-question golden set, RAGAS, red team | ⬜ |
+| **M2** | Document ingestion — upload, Docling, chunking, embed, index | 🟢 Complete |
+| **M3** | Production RAG — BM25, RRF, reranking, citations, abstention | 🟢 Complete |
+| **M4** | Security — auth, RBAC, jurisdiction isolation, PII, prompt injection | 🟢 Complete |
+| **M5** | Product UI — polished chat, documents, citation viewer, provenance | 🟢 Complete |
+| **M6** | Evaluation — 200-question golden set, RAG metrics, red team, CI gating | 🟢 Complete |
 | **M7** | Observability — Langfuse, Phoenix, tracing, drift | ⬜ |
 | **M8** | Azure — containers, database, storage, model, monitoring | ⬜ |
 

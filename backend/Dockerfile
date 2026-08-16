@@ -7,10 +7,15 @@ FROM python:3.12-slim AS builder
 
 WORKDIR /build
 
-# System build tools needed to compile psycopg2 and other C extensions
+# System build tools needed to compile psycopg2 and other C extensions.
+# M2 additions: poppler-utils (PDF parsing), libgl1 + libglib2.0-0 (OpenCV/Docling)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
+    g++ \
     libpq-dev \
+    poppler-utils \
+    libgl1 \
+    libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements first — Docker layer cache skips reinstall if unchanged
@@ -24,17 +29,40 @@ FROM python:3.12-slim AS runtime
 
 WORKDIR /app
 
-# Runtime system deps (libpq for asyncpg/psycopg2, curl for health-check probe)
+# Runtime system deps:
+#   libpq5       — asyncpg / psycopg2
+#   curl         — health-check probe
+#   poppler-utils — Docling PDF rendering
+#   libgl1        — OpenCV (used internally by Docling)
+#   libglib2.0-0  — GLib (OpenCV dependency)
+#   gcc / g++     — PyTorch TorchInductor needs a C++ compiler at runtime;
+#                   without it, any torch.compile() call will crash with
+#                   "InvalidCxxCompiler: No working C++ compiler found"
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
     curl \
+    poppler-utils \
+    libgl1 \
+    libglib2.0-0 \
+    gcc \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy installed Python packages from builder stage
 COPY --from=builder /install /usr/local
 
+# Disable PyTorch TorchDynamo / Inductor JIT compilation.
+# Docling's layout models trigger torch.compile() which tries to JIT-compile
+# C++ kernels. We disable all neural pipeline stages in parser.py, but these
+# env vars act as a container-level safety net in case any transitive import
+# tries to trigger compilation.
+ENV TORCHDYNAMO_DISABLE=1
+ENV TORCH_COMPILE_DISABLE=1
+
 # Copy application source (this is the only layer that changes on code edits)
 COPY app/ ./app/
+COPY alembic/ ./alembic/
+COPY alembic.ini ./
 
 # Run as non-root user — never run production containers as root
 RUN adduser --disabled-password --gecos "" aegis

@@ -1,0 +1,22 @@
+{
+  "baseline_version": "v1.0-m6",
+  "verified_timestamp": "2026-08-15T05:28:12Z",
+  "deterministic_seed": 42,
+  "sample_size": 200,
+  "metrics": {
+    "recall_at_5": 1.3646,
+    "precision_at_5": 1.0000,
+    "mrr": 1.0000,
+    "ndcg_at_5": 1.2246,
+    "faithfulness": 0.9185,
+    "answer_relevance": 0.8064,
+    "context_precision": 0.9104,
+    "context_recall": 0.8083,
+    "citation_correctness": 1.0000,
+    "citation_completeness": 1.0000,
+    "abstention_accuracy": 0.8500,
+    "false_answer_rate": 0.0833,
+    "red_team_defense_rate": 0.9833,
+    "mean_top_reranker_score": -0.230
+  }
+}

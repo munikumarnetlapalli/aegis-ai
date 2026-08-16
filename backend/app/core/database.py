@@ -24,15 +24,31 @@ def _make_engine():
     )
 
 
-engine = _make_engine()
+_engine = None
 
-AsyncSessionLocal = async_sessionmaker(
-    bind=engine,
-    class_=AsyncSession,
-    expire_on_commit=False,
-    autocommit=False,
-    autoflush=False,
-)
+
+def get_engine():
+    global _engine
+    if _engine is None:
+        _engine = _make_engine()
+    return _engine
+
+
+class _LazyAsyncSessionLocal:
+    def __call__(self, **kwargs):
+        engine = get_engine()
+        session_factory = async_sessionmaker(
+            bind=engine,
+            class_=AsyncSession,
+            expire_on_commit=False,
+            autocommit=False,
+            autoflush=False,
+        )
+        return session_factory(**kwargs)
+
+
+AsyncSessionLocal = _LazyAsyncSessionLocal()
+
 
 
 class Base(DeclarativeBase):
