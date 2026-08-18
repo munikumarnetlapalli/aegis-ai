@@ -228,4 +228,4 @@ AegisAI implements defense-in-depth across all system boundaries:
 
 ## License
 
-MIT
+MIT 2.0
